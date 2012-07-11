@@ -7,8 +7,8 @@ class tracelytics::python {
   }
 
   package { "python-pip":
-    ensure => installed,
-    requre => [ Package["python"], Package["python-dev"] ],
+    ensure  => installed,
+    require => [ Package["python"], Package["python-dev"] ],
   }
 
   exec { "install-python-oboe":
