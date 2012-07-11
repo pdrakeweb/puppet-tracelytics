@@ -2,7 +2,7 @@ class tracelytics {
 
   include apt
 
-  $access_key = hiera('tracelytics_access_key', '')
+  $access_key = hiera('tracelytics_access_key', 'access_key')
   
   package { "liboboe0":
     ensure  => installed,
@@ -27,13 +27,13 @@ class tracelytics {
   }
 
   apt::source { "tracelytics":
-    location          => "http://apt.tracelytics.com/${access_key}",
-    release           => "${lsbdistcodename}",
-    repos             => "main",
-    required_packages => "debian-keyring debian-archive-keyring",
-    key               => "03311F20",
-    key_server        => "pgp.mit.edu",
-    require           => File["/etc/tracelytics.conf"],
+    location    => "http://apt.tracelytics.com/${access_key}",
+    release     => "${lsbdistcodename}",
+    repos       => "main",
+    include_src => false,
+    key         => "03311F20",
+    key_server  => "pgp.mit.edu",
+    require     => File["/etc/tracelytics.conf"],
   }
 
 }
