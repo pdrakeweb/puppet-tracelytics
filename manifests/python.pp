@@ -2,13 +2,22 @@ class tracelytics::python {
 
   include tracelytics
 
-  package { "python-dev":
-    ensure => installed,
+  if !defined(Package["python"]) {
+    package { "python":
+      ensure => installed,
+    }
+  }
+
+  if !defined(Package["python-dev"]) {
+    package { "python-dev":
+      ensure  => installed,
+      require => Package["python"],
+    }
   }
 
   package { "python-pip":
     ensure  => installed,
-    require => [ Package["python"], Package["python-dev"] ],
+    require => Package["python-dev"],
   }
 
   exec { "install-python-oboe":
