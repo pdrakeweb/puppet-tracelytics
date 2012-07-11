@@ -1,0 +1,35 @@
+{
+  "types": [
+
+  ],
+  "license": "GPL",
+  "description": "Installs and configures tracelytics instrumentation.",
+  "summary": "Installs tracelytics instrumentation.",
+  "source": "UNKNOWN",
+  "author": "pdrakeweb",
+  "project_page": "https://github.com/pdrakeweb/puppet-tracelytics",
+  "version": "0.0.1",
+  "name": "puppet-tracelytics",
+  "checksums": {
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "manifests/ruby.pp": "f252e594f8f02e34733b8135089c3155",
+    "manifests/python.pp": "e47e42d47b40abf46cdc94764d1436fa",
+    "manifests/java.pp": "238e9e546d501c254c72115e614f3e8e",
+    "manifests/php.pp": "7d5b09b37fb0ad251fc5e27d34cc4ca0",
+    "templates/tracelytics.conf.erb": "997d6481d6ce9abcfa35c3694511e1b6",
+    "templates/oboe.conf.erb": "b0642b1a2e586363b4214c43b7580d53",
+    "README": "60a6c351d0a182e4db18e213e81ffff1",
+    "tests/init.pp": "b0e3cb1fb7929238e383d640e75d700a",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "metadata.json": "d34d0b70aba36510fbc2df4e667479ef",
+    "Modulefile": "f05f9030f70bf18e0a26800aeeb8c3d6",
+    "manifests/init.pp": "61abf1652d7ff30be397618d1f960d0b",
+    "manifests/apache.pp": "a177f4fae72f14c8a3bd9548fb38aeb5"
+  },
+  "dependencies": [
+    {
+      "version_requirement": ">= 0.0.1",
+      "name": "puppetlabs/apt"
+    }
+  ]
+}
