@@ -4,17 +4,19 @@ class tracelytics {
 
   $access_key = hiera('tracelytics_access_key', '')
   
-  package { 
-    "liboboe0":
-      ensure  => installed,
-      require => Apt::source["tracelytics"];
-    "liboboe-dev":
-      ensure  => installed,
-      require => Apt::source["tracelytics"];
-    "tracelyzer":
-      ensure  => installed,
-      require => Apt::source["tracelytics"];
-    ;
+  package { "liboboe0":
+    ensure  => installed,
+    require => Apt::Source["tracelytics"],
+  }
+
+  package { "liboboe-dev":
+    ensure  => installed,
+    require => Apt::Source["tracelytics"],
+  }
+
+  package { "tracelyzer":
+    ensure  => installed,
+    require => Apt::Source["tracelytics"],
   }
 
   file { "/etc/tracelytics.conf":
