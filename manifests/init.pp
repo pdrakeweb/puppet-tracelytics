@@ -11,12 +11,12 @@ class tracelytics {
 
   package { "liboboe-dev":
     ensure  => installed,
-    require => Apt::Source["tracelytics"],
+    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
   }
 
   package { "tracelyzer":
     ensure  => installed,
-    require => Apt::Source["tracelytics"],
+    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
   }
 
   file { "/etc/tracelytics.conf":
