@@ -7,7 +7,7 @@ class tracelytics::apache($apache_tracing_mode = "always", $apache_sampling_rate
 
   package { "libapache2-mod-oboe":
     ensure  => installed,
-    require => [ Package["liboboe0"], Package["apache2"] ],
+    require => [ Package["liboboe0"], Apt::Source["tracelytics"], Package["apache2"] ],
   }
 
   file { "/etc/apache2/mods-available/oboe.conf":
