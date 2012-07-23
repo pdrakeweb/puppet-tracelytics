@@ -4,14 +4,14 @@ class tracelytics::ruby {
     ensure    => installed, 
     provider  => gem,
     source    => "http://gem.tracelytics.com/",
-    require   => Package["rubygems"],
+    require   => [ Package["rubygems"], Package["liboboe-dev"]],
   }
 
   package { "oboe_fu": 
     ensure    => installed, 
     provider  => gem,
     source    => "http://gem.tracelytics.com/",
-    require   => Package["rubygems"],
+    require   => [ Package["rubygems"], Package["liboboe-dev"] ],
   }
 
 }
