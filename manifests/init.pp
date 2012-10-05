@@ -21,9 +21,10 @@ class tracelytics {
 
   file { "/etc/tracelytics.conf":
     owner   => root,
-    group   => admin,
-    mode    => 770,
+    group   => root,
+    mode    => 644,
     content => template("tracelytics/tracelytics.conf.erb"),
+    replace => false,
   }
 
   apt::source { "tracelytics":
