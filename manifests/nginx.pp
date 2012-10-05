@@ -11,6 +11,7 @@ class tracelytics::nginx($nginx_tracing_mode = "always", $nginx_sampling_rate = 
     mode    => 644,
     content => template('tracelytics/nginx.oboe.conf.erb'),
     require => Package['nginx-extras'],
+    notify  => Service['nginx'],
   }
 
 }
