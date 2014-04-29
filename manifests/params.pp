@@ -16,7 +16,7 @@ class tracelytics::params {
     $ruby_oboe_fu_package      = 'oboe-fu'
     $tracelyzer_service        = 'tracelyzer'
     $tracelyzer_package        = 'tracelyzer'
-    $tracelytic_config         = '/etc/tracelytics.conf'
+    $tracelytics_config        = '/etc/tracelytics.conf'
     $liboboe_package           = 'liboboe'
     $liboboe_dev_package       = 'liboboe-devel'
   } elsif $::osfamily == 'Debian' {
@@ -35,7 +35,7 @@ class tracelytics::params {
     $ruby_oboe_fu_package      = 'oboe-fu'
     $tracelyzer_service        = 'tracelyzer'
     $tracelyzer_package        = 'tracelyzer'
-    $tracelytic_config         = '/etc/tracelytics.conf'
+    $tracelytics_config        = '/etc/tracelytics.conf'
     $liboboe_package           = 'liboboe0'
     $liboboe_dev_package       = 'liboboe-dev'
   } else {
