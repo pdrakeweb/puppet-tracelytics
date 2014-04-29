@@ -1,6 +1,6 @@
 name    'puppet-tracelytics'
 version '0.0.1'
-author 'pdrakeweb'
+author  'pdrakeweb'
 license 'GPL'
 summary 'Installs tracelytics instrumentation.'
 description 'Installs and configures tracelytics instrumentation.'

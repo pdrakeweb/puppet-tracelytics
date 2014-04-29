@@ -1,40 +1,29 @@
-class tracelytics {
+class tracelytics ($access_key) inherits tracelytics::params {
 
-  include apt
-
-  $access_key = hiera('tracelytics_access_key', 'access_key')
-  
-  package { "liboboe0":
-    ensure  => installed,
-    require => Apt::Source["tracelytics"],
+  tracelytics::repo { 'tracelytics':
+    access_key => $access_key,
   }
 
-  package { "liboboe-dev":
+  package { $tracelytics::params::liboboe_package:
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => Tracelytics::Repo['tracelytics'],
   }
 
-  package { "tracelyzer":
+  package { $tracelytics::params::liboboe_dev_package:
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => Package[$tracelytics::params::liboboe_package],
   }
 
-  file { "/etc/tracelytics.conf":
+  package { $tracelytics::params::tracelyzer_package:
+    ensure  => installed,
+    require => Package[$tracelytics::params::liboboe_package],
+  }
+
+  file { '/etc/tracelytics.conf':
     owner   => root,
     group   => root,
-    mode    => 644,
-    content => template("tracelytics/tracelytics.conf.erb"),
+    mode    => 0644,
+    content => template('tracelytics/tracelytics.conf.erb'),
     replace => false,
   }
-
-  apt::source { "tracelytics":
-    location    => "http://apt.tracelytics.com/${access_key}",
-    release     => "${lsbdistcodename}",
-    repos       => "main",
-    include_src => false,
-    key         => "03311F20",
-    key_server  => "pgp.mit.edu",
-    require     => File["/etc/tracelytics.conf"],
-  }
-
 }

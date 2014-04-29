@@ -2,14 +2,14 @@ class tracelytics::java {
 
   include tracelytics
 
-  package { "tracelytics-java-agent":
+  package { $tracelytics::params::java_agent_package:
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => Package[$tracelytics::params::liboboe_package],
   }
 
-  package { "tracelytics-java-agent-native":
+  package { $tracelytics::params::java_agent_native_package:
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => Package[$tracelytics::params::liboboe_package],
   }
 
 }

@@ -2,9 +2,9 @@ class tracelytics::php {
 
   include tracelytics
 
-  package { "php-oboe":
+  package { $tracelytics::params::php_oboe_package:
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => Package[$tracelytics::params::liboboe_package],
   }
 
 }
