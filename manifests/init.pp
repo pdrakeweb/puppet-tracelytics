@@ -19,11 +19,18 @@ class tracelytics ($access_key) inherits tracelytics::params {
     require => Package[$tracelytics::params::liboboe_package],
   }
 
-  file { '/etc/tracelytics.conf':
+  file { $tracelytics::params::tracelytics_config:
     owner   => root,
     group   => root,
     mode    => 0644,
     content => template('tracelytics/tracelytics.conf.erb'),
-    replace => false,
+    require => Package[$tracelytics::params::tracelyzer_package],
+    notify  => Service[$tracelytics::params::tracelyzer_service],
+  }
+
+  service { $tracelytics::params::tracelyzer_service:
+    ensure  => running,
+    enable  => true,
+    require => File[$tracelytics::params::tracelytics_config],
   }
 }
