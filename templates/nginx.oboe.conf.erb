@@ -5,9 +5,9 @@
 # oboe_tracing_mode: When traces should be initiated for incoming
 # requests. Valid options are "always", "through", and "never".
 # Default is "always".
-oboe_tracing_mode <%= tracing_mode %>;
+oboe_tracing_mode <%= @tracing_mode %>;
 
 # oboe_sampling_rate: The number of requests out of every million that
 # will be traced; must be an integer between 0 and 1000000.
 # Default is 300000 (30%).
-oboe_sampling_rate <%= sampling_rate %>;
+oboe_sampling_rate <%= @sampling_rate %>;
