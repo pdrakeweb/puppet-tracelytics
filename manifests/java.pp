@@ -1,15 +1,15 @@
-class tracelytics::java {
+class traceview::java {
 
-  include tracelytics
+  include traceview
 
   package { "tracelytics-java-agent":
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => [ Package["liboboe0"], Apt::Source["traceview"] ],
   }
 
   package { "tracelytics-java-agent-native":
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => [ Package["liboboe0"], Apt::Source["traceview"] ],
   }
 
 }
