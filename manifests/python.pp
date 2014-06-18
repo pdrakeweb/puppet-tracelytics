@@ -1,6 +1,6 @@
-class tracelytics::python {
+class traceview::python {
 
-  include tracelytics
+  include traceview
 
   if !defined(Package["python"]) {
     package { "python":

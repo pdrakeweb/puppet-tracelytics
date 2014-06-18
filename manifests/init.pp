@@ -1,33 +1,33 @@
-class tracelytics {
+class traceview {
 
   include apt
 
-  $access_key = hiera('tracelytics_access_key', 'access_key')
-  
+  $access_key = hiera('traceview_access_key', 'access_key')
+
   package { "liboboe0":
     ensure  => installed,
-    require => Apt::Source["tracelytics"],
+    require => Apt::Source["traceview"],
   }
 
   package { "liboboe-dev":
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => [ Package["liboboe0"], Apt::Source["traceview"] ],
   }
 
   package { "tracelyzer":
     ensure  => installed,
-    require => [ Package["liboboe0"], Apt::Source["tracelytics"] ],
+    require => [ Package["liboboe0"], Apt::Source["traceview"] ],
   }
 
   file { "/etc/tracelytics.conf":
     owner   => root,
     group   => root,
     mode    => 644,
-    content => template("tracelytics/tracelytics.conf.erb"),
+    content => template("traceview/tracelytics.conf.erb"),
     replace => false,
   }
 
-  apt::source { "tracelytics":
+  apt::source { "traceview":
     location    => "http://apt.tracelytics.com/${access_key}",
     release     => "${lsbdistcodename}",
     repos       => "main",
