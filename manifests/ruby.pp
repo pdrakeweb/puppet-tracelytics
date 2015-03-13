@@ -1,17 +1,19 @@
 class tracelytics::ruby {
 
-  package { "oboe": 
-    ensure    => installed, 
-    provider  => gem,
-    source    => "http://gem.tracelytics.com/",
-    require   => [ Package["rubygems"], Package["liboboe-dev"]],
+  include tracelytics
+
+  package { $tracelytics::params::ruby_oboe_package:
+    ensure   => installed,
+    provider => gem,
+    source   => 'http://gem.tracelytics.com/',
+    require  => [ Package['rubygems'], Package[$tracelytics::params::liboboe_dev_package]],
   }
 
-  package { "oboe_fu": 
-    ensure    => installed, 
-    provider  => gem,
-    source    => "http://gem.tracelytics.com/",
-    require   => [ Package["rubygems"], Package["liboboe-dev"] ],
+  package { $tracelytics::params::ruby_oboe_fu_package:
+    ensure   => installed,
+    provider => gem,
+    source   => 'http://gem.tracelytics.com/',
+    require  => [ Package['rubygems'], Package[$tracelytics::params::liboboe_dev_package]],
   }
 
 }
