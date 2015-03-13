@@ -1,7 +1,7 @@
 class tracelytics::params {
 
   if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon' {
-    $apache_package            = 'apache2'
+    $apache_package            = 'httpd'
     $apache_mod_oboe_package   = 'libapache2-mod-oboe'
     $apache_mod_oboe_config    = '/etc/httpd/conf.d/oboe.conf'
     $java_agent_package        = 'tracelytics-java-agent'
@@ -21,7 +21,7 @@ class tracelytics::params {
     $liboboe_package           = 'liboboe'
     $liboboe_dev_package       = 'liboboe-devel'
   } elsif $::osfamily == 'Debian' {
-    $apache_package            = 'httpd'
+    $apache_package            = 'apache2'
     $apache_mod_oboe_package   = 'libapache2-mod-oboe'
     $apache_mod_oboe_config    = '/etc/apache2/mods-available/oboe.conf'
     $java_agent_package        = 'tracelytics-java-agent'
